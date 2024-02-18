@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+    <title>site</title>
+</head>
+<body>
+    <canvas id="c1" width="5000" height="500"></canvas>
+    <form action="#" method="#" id="form">
+        <div id="input">
+          <label>
+            n:
+            <input type="number" name="n" value="7">
+          </label>
+        </div>
+        <div id="input">
+          <label>
+            m<=:
+            <input type="number" name="m" value="8">
+          </label>
+        </div>
+        <div id="input">
+          <label>
+            c:
+            <input type="number" name="c" value="2">
+          </label>
+        </div>
+        <div>
+          <button type="submit">generate</button>
+          </div>
+      </form>
+      <script src="js.js"></script>
+      <p id="out">=========<br>your gr<br>=========</p>
+      <script>
+        var canvas = document.getElementById("c1");
+        var context = canvas.getContext("2d");
+
+        const mouse = { x:0, y:0}; 
+        var draw = false;
+        canvas.addEventListener("mousedown", function(e){
+              
+            mouse.x = e.pageX - this.offsetLeft;
+            mouse.y = e.pageY - this.offsetTop;
+            draw = true;
+            context.beginPath();
+            context.moveTo(mouse.x, mouse.y);
+            context.strokeStyle = 'red'
+            context.lineWidth=3
+        });
+        canvas.addEventListener("mousemove", function(e){
+              
+            if(draw==true){
+              
+                mouse.x = e.pageX - this.offsetLeft;
+                mouse.y = e.pageY - this.offsetTop;
+                context.lineTo(mouse.x, mouse.y);
+                context.stroke();
+            }
+        });
+        
+        canvas.addEventListener("mouseup", function(e){
+              
+            mouse.x = e.pageX - this.offsetLeft;
+            mouse.y = e.pageY - this.offsetTop;
+            context.lineTo(mouse.x, mouse.y);
+            context.stroke();
+            context.closePath();
+            draw = false;
+        });
+      </script>
+      <link rel="stylesheet" href="css.css">
+</body>
