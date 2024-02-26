@@ -8,3 +8,28 @@
     border-radius: 4px;
     padding: 12px 20px;
 }
+
+.txt{
+    display: inline-block;
+    font-size: 30px;
+}
+
+.inp{
+    display: inline-block;
+    font-size: 20px;
+    height: 40px;
+}
+
+#subb{
+    height:50px;
+    width:150px;
+    font-size: 30px;
+    border-radius: 10px;
+    background-color: #ccc;
+    transition-duration: 0.5s;
+}
+
+#subb:hover{
+    transition-duration: 1s;
+    background-color:rgb(32, 188, 255);
+}
