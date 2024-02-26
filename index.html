@@ -3,32 +3,39 @@
     <title>site</title>
 </head>
 <body>
-    <canvas id="c1" width="5000" height="500"></canvas>
+  <canvas id="c1" width="5000" height="500"></canvas>
     <form action="#" method="#" id="form">
         <div id="input">
           <label>
-            n:
-            <input type="number" name="n" value="7">
+            <div class = "txt">
+              n=
+            </div>
+            <input type="number" name="n" value="7" class = "inp">
           </label>
         </div>
         <div id="input">
           <label>
-            m<=:
-            <input type="number" name="m" value="8">
+            <div class = "txt">
+              m<=
+            </div>
+            <input type="number" name="m" value="8" class = "inp">
           </label>
         </div>
         <div id="input">
           <label>
-            c:
-            <input type="number" name="c" value="2">
+            <div class = "txt">
+              c=
+            </div>
+            <input type="number" name="c" value="2" class = "inp">
           </label>
         </div>
         <div>
-          <button type="submit">generate</button>
-          </div>
+          <button type="submit" id="subb">generate</button>
+        </div>
       </form>
       <script src="js.js"></script>
       <p id="out">=========<br>your gr<br>=========</p>
+
       <script>
         var canvas = document.getElementById("c1");
         var context = canvas.getContext("2d");
