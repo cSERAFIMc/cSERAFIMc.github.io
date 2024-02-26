@@ -138,7 +138,7 @@ function drawnum(x, y, I){
         ctx.fillText(I,x+15-25,y+10);
     }
     else {
-         ctx.fillText(I,x+15-35,y+10);
+         ctx.fillText(I,x+15-32,y+10);
     }
 }
 
