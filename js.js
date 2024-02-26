@@ -134,7 +134,12 @@ function drawnum(x, y, I){
     var ctx=canvas.getContext('2d')
     ctx.fillStyle = 'black'
     ctx.font = "30px Arial";
-    ctx.fillText(I,x+15-25,y+10);
+    if(I<10) {
+        ctx.fillText(I,x+15-25,y+10);
+    }
+    else {
+         ctx.fillText(I,x+15-35,y+10);
+    }
 }
 
 function getFormValue(event) {
