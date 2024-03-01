@@ -290,4 +290,29 @@ function foo() {
 
 form.addEventListener('submit', getFormValue);
 
+function copyText() {
+    var ans=''
+    var OUT = document.getElementById("out")
+    if(OUT.innerHTML=='') return
+    var x='';
+    var y='';
+    for(var i=0;i<OUT.innerHTML.length;i++){
+        if(OUT.innerHTML[i]<='9' && OUT.innerHTML[i]>='0') {
+            x+=OUT.innerHTML[i]
+        }
+        else {
+            if(y==''){
+                y=x
+                x=''
+                continue
+            }
+            ans+=y+' '+x+'\n';
+            x=''
+            y=''
+        }
+    }
+    ans+=y+' '+x+'\n';
+    
+    navigator.clipboard.writeText(ans);
+}
 
