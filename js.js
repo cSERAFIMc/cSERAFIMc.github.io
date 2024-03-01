@@ -155,8 +155,7 @@ function getFormValue(event) {
     }
     M/=2
     var OUT = document.getElementById("out")
-    OUT.innerHTML="=========<br>"
-    OUT.innerHTML+=n+' '+M+'<br>'
+    OUT.innerHTML=n+' '+M+'<br>'
     for(var i =0;i<n;i++){
         for(var j of gr[i]){
             if(i<j){
@@ -164,7 +163,99 @@ function getFormValue(event) {
             }
         }
     }
-    OUT.innerHTML+="========="
+
+    var canvas = document.getElementById('c1')
+    var ctx=canvas.getContext('2d')
+    ctx.clearRect(0, 0, 5000, 500)
+    var c=[]
+    var M=0;
+    for(var i=0;i<n;i++){
+        var f=0
+        for(var j of gr[i]){
+            if(j<i){
+                f=1
+                M++
+                c[c.length-1]++;
+                break
+            }
+        }
+        if(f) continue
+        c.push(1)
+    }
+    var xy=[]
+    for(var i=0;i<c.length;i++){
+        for(var j=0;j<c[i];j++){
+            xy.push([Math.floor(Math.cos((2*pi/c[i])*j)*200)+250+i*500, Math.floor(Math.sin(((2*pi)/c[i])*j)*200)+250])
+            //console.log([Math.floor(Math.cos(2*pi/c[i])*100)+250+i*250, Math.floor(Math.sin(2*pi/c[i])*100)+250])
+        }
+    }
+    for(var i=0;i<n;i++){
+        for(var j of gr[i]){
+            drawline(xy[i][0], xy[i][1], xy[j][0], xy[j][1])
+        }
+    }
+    for(var i=0;i<n;i++) draw_point(xy[i][0], xy[i][1], i+1)
+    for(var i=0;i<n;i++) drawnum(xy[i][0], xy[i][1], i+1)
+}
+
+function foo() {
+    var pi=Math.PI
+    var OUT = document.getElementById("out")
+    if(OUT.innerHTML=='') return
+    var gr=[]
+    var n=-1, m=-1;
+    var A=-1;
+    var x=0;
+    for(var i=0;i<OUT.innerHTML.length;i++){
+        if(OUT.innerHTML[i]<='9' && OUT.innerHTML[i]>='0') {
+            x=x*10+(OUT.innerHTML[i]-'0')
+        }
+        else {
+            if(n==-1){
+                n=x;
+                for(var j=0;j<n;j++) gr.push([]);
+                x=0;
+                continue;
+            }
+            if(m==-1){
+                m=x;
+                x=0;
+                continue;
+            }
+            if(x==0) continue
+            x--;
+            if(A==-1){
+                A=x;
+                x=0
+            }
+            else{
+                gr[A].push(x)
+                gr[x].push(A)
+                A=-1;
+                x=0
+            }
+        }
+    }
+    if(n==-1){
+        n=x;
+        for(var j=0;j<n;j++) gr.push([]);
+        x=0;
+    }
+    else if(m==-1){
+        m=x;
+        x=0;
+    }
+    else if(x!=0) {
+        x--;
+        if(A==-1){
+            A=x;
+        }
+        else{
+            gr[A].push(x)
+            gr[x].push(A)
+            A=-1;
+        }
+    }
 
     var canvas = document.getElementById('c1')
     var ctx=canvas.getContext('2d')
@@ -186,7 +277,6 @@ function getFormValue(event) {
     for(var i=0;i<c.length;i++){
         for(var j=0;j<c[i];j++){
             xy.push([Math.floor(Math.cos((2*pi/c[i])*j)*200)+250+i*500, Math.floor(Math.sin(((2*pi)/c[i])*j)*200)+250])
-            //console.log([Math.floor(Math.cos(2*pi/c[i])*100)+250+i*250, Math.floor(Math.sin(2*pi/c[i])*100)+250])
         }
     }
     for(var i=0;i<n;i++){
