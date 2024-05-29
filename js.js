@@ -167,11 +167,6 @@ function getFormValue(event) {
     var canvas = document.getElementById('c1')
     var ctx=canvas.getContext('2d')
     ctx.clearRect(0, 0, 5000, 500)
-    if(M==0){
-        console.log('ok')
-        ctx.clearRect(0, 0, 5000, 500)
-        return
-    }
     var c=[]
     var M=0;
     for(var i=0;i<n;i++){
@@ -193,6 +188,10 @@ function getFormValue(event) {
             xy.push([Math.floor(Math.cos((2*pi/c[i])*j)*200)+250+i*500, Math.floor(Math.sin(((2*pi)/c[i])*j)*200)+250])
             //console.log([Math.floor(Math.cos(2*pi/c[i])*100)+250+i*250, Math.floor(Math.sin(2*pi/c[i])*100)+250])
         }
+    }
+    if(M==0){
+        console.log(c)
+        console.log(xy)
     }
     for(var i=0;i<n;i++){
         for(var j of gr[i]){
