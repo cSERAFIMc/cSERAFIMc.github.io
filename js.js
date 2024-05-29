@@ -170,6 +170,7 @@ function getFormValue(event) {
     if(M==0){
         console.log('ok')
         ctx.clearRect(0, 0, 5000, 500)
+        return
     }
     var c=[]
     var M=0;
