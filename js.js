@@ -167,6 +167,10 @@ function getFormValue(event) {
     var canvas = document.getElementById('c1')
     var ctx=canvas.getContext('2d')
     ctx.clearRect(0, 0, 5000, 500)
+    if(M==0){
+        console.log('ok')
+        ctx.clearRect(0, 0, 5000, 500)
+    }
     var c=[]
     var M=0;
     for(var i=0;i<n;i++){
