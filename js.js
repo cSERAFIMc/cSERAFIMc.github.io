@@ -189,10 +189,7 @@ function getFormValue(event) {
             //console.log([Math.floor(Math.cos(2*pi/c[i])*100)+250+i*250, Math.floor(Math.sin(2*pi/c[i])*100)+250])
         }
     }
-    if(M==0){
-        console.log(c)
-        console.log(xy)
-    }
+    drawline(0, 0, 0, 0)
     for(var i=0;i<n;i++){
         for(var j of gr[i]){
             drawline(xy[i][0], xy[i][1], xy[j][0], xy[j][1])
@@ -283,6 +280,7 @@ function foo() {
             xy.push([Math.floor(Math.cos((2*pi/c[i])*j)*200)+250+i*500, Math.floor(Math.sin(((2*pi)/c[i])*j)*200)+250])
         }
     }
+    drawline(0, 0, 0, 0)
     for(var i=0;i<n;i++){
         for(var j of gr[i]){
             drawline(xy[i][0], xy[i][1], xy[j][0], xy[j][1])
